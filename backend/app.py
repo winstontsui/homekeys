@@ -1,7 +1,11 @@
 import os
 import json
+import uuid
 import logging
 import requests
+import smtplib
+from elevenlabs import ElevenLabs
+from email.mime.text import MIMEText
 from flask import Flask, request, Response
 from twilio.twiml.voice_response import VoiceResponse
 from twilio.rest import Client
@@ -19,6 +23,34 @@ TWILIO_PHONE_NUMBER = os.getenv("TWILIO_PHONE_NUMBER")
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 DEEPGRAM_API_KEY = os.getenv("DEEPGRAM_API_KEY")
 ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_API_KEY")
+
+
+# Global dictionary to hold a single call summary for each call by CallSid.
+call_summaries = {}
+elevenlabs_client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
+
+def generate_tts_audio(text, voice_id="yvc8Xy9LseeosFGplnuX", model_id="eleven_multilingual_v2"):
+    """
+    Generates TTS audio from text using ElevenLabs.
+    Returns the raw audio data.
+    """
+    audio = elevenlabs_client.text_to_speech.convert(
+        text=text,
+        voice_id=voice_id,
+        model_id=model_id,
+        output_format="mp3_44100_128"
+    )
+    return audio
+
+def save_audio_to_file(audio_data):
+    # Convert the generator to a bytes object
+    audio_bytes = b"".join(audio_data)
+    filename = f"{uuid.uuid4()}.mp3"
+    file_path = os.path.join("static", filename)
+    with open(file_path, "wb") as f:
+        f.write(audio_bytes)
+    return f"/static/{filename}", file_path
+
 
 def load_property_data():
     """Load property data from JSON file."""
@@ -40,43 +72,28 @@ def get_recording_url(call_sid):
         logger.error(f"Error retrieving recordings from Twilio API: {str(e)}")
         return None
 
-def ai_interaction(user_input, current_property_info):
+def ai_interaction(user_input, current_summary):
     """
-    Calls the OpenAI API (GPT-4) to process the latest user input and update inquiry information.
-    The prompt instructs the AI to:
-      - Update the inquiry information based on the input.
-      - Ask clarifying questions if the information is incomplete.
-      - For any numeric details provided digit-by-digit, convert them into a standard numeric string.
-      - Confirm the received information.
-      - Output exactly a JSON object with the following keys (and no additional text):
-            "updated_data", "next_question", "done", and "confirmation".
+    Interact with the AI to answer the user's query and update the call summary.
+    The current call summary is provided so that the AI can return an updated version.
     """
     try:
-        welcome_message = ""
-        if all(value is None for value in current_property_info.values()):
-            welcome_message = "Welcome to HomeKeys, your real estate assistant. "
-
-        # Load all available properties and include that in the context.
+        # Load available properties for context.
         all_properties = load_property_data()
 
         prompt = f"""
-        {welcome_message}
-        You are a friendly virtual assistant for HomeKeys, helping users inquire about property listings or anything on https://www.homekeys.casa/.
+        You are a friendly virtual assistant for HomeKeys, here to help answer any questions about property listings or related topics from https://www.homekeys.casa/.
         Here is the current property inventory: {json.dumps(all_properties, indent=2)}
-        The current inquiry data is: {json.dumps(current_property_info)}.
+        The current call summary is: "{current_summary}".
         The user just said: "{user_input}".
         
-        Update the inquiry data by extracting details such as the property address, property type, budget, or other relevant details.
-        If the provided information is incomplete (for example, only an address is given without additional details),
-        ask a clarifying question in the JSON to collect the missing part. Confirm the received information back to the user
-        when applicable.
-        
-        IMPORTANT: Output a JSON object with the following keys:
-          - "updated_data": the updated inquiry data.
-          - "next_question": the next question or clarification or whatever to ask the user.
-          - "done": True if the use has no other questions, False otherwise.
-          - "confirmation": a message confirming the received information.
-        There's exactly these keys: "updated_data", "next_question", "done", and "confirmation". Do not include any extra explanations.
+        Provide a helpful and concise answer in JSON format with exactly the following keys:
+          - "response": your answer to the user's query.
+          - "next_question": any follow-up question if more details are needed, or an empty string if not.
+          - "done": True if the conversation should end, or False if further interaction is expected.
+          - "confirmation": a brief confirmation or summary of your response.
+          - "updated_summary": A concise overall call summary of user's call.
+        Return this JSON with nothing else.
         """
         response = requests.post(
             "https://api.openai.com/v1/chat/completions",
@@ -109,10 +126,11 @@ def ai_interaction(user_input, current_property_info):
         logger.error(f"AI interaction error: {e}")
         # Fallback: ask the user to repeat their response
         return {
-            "updated_data": current_property_info,
-            "next_question": "Sorry, can you say it again?",
+            "response": "I'm sorry, could you please repeat that?",
+            "next_question": "",
             "done": False,
-            "confirmation": ""
+            "confirmation": "",
+            "updated_summary": current_summary
         }
 
 def transcribe_with_deepgram(recording_url):
@@ -125,15 +143,15 @@ def transcribe_with_deepgram(recording_url):
     audio_response = requests.get(recording_url, auth=twilio_auth)
 
     if audio_response.status_code != 200:
-        logging.error(f"Error retrieving recording from Twilio: {audio_response.status_code} {audio_response.text}")
+        logger.error(f"Error retrieving recording from Twilio: {audio_response.status_code} {audio_response.text}")
         return None
 
     content_type = audio_response.headers.get("Content-Type", "audio/wav")
-    logging.info(f"Content-Type from Twilio: {content_type}")
+    logger.info(f"Content-Type from Twilio: {content_type}")
 
     audio_data = audio_response.content
 
-    logging.info("Sending audio to Deepgram for transcription.")
+    logger.info("Sending audio to Deepgram for transcription.")
     deepgram_url = "https://api.deepgram.com/v1/listen"
 
     headers = {
@@ -190,15 +208,25 @@ def handle_voice():
     call_sid = request.form.get("CallSid")
     logger.info(f"CallSid: {call_sid} initiating voice call.")
 
+    # Initialize the call summary for this call as an empty string.
+    call_summaries[call_sid] = ""
+
+
+    greeting_text = "Welcome to HomeKey—the AI-powered assistant here to help answer your property questions. How can I assist you today?"
+    audio_data = generate_tts_audio(greeting_text)
+    audio_url, file_path = save_audio_to_file(audio_data)
+
+    
     response = VoiceResponse()
-    response.say("Welcome to HomeKeys—the AI-powered, streamlined alternative to traditional real estate. We're here to simplify your property search and provide smart insights tailored to you. How can we assist you today?")
+    response.play(audio_url)
+
     
     response.record(
-        maxLength="15",         # Maximum recording length in seconds
-        action="/recording",     # Twilio will POST the recording details to this endpoint when done
+        maxLength="15",
+        action="/recording",
         playBeep=False,
-        trim="trim-silence",     # Automatically trim silence from start and end
-        timeout="4"              # End recording after 2 seconds of silence
+        trim="trim-silence",
+        timeout="3"
     )
     
     return Response(str(response), mimetype="text/xml")
@@ -206,8 +234,11 @@ def handle_voice():
 @app.route("/recording", methods=["POST"])
 def handle_recording():
     """
-    Handles the recording callback from Twilio: sends the audio to Deepgram for transcription,
-    processes the transcribed text using the AI interaction function, and determines the next step.
+    Handles the recording callback from Twilio:
+      - Sends the audio to Deepgram for transcription.
+      - Processes the transcribed text with AI, providing the current call summary.
+      - Updates the overall call summary with the AI's response.
+      - If the conversation is done, sends a summary email.
     """
     call_sid = request.form.get("CallSid")
     time.sleep(2)
@@ -220,33 +251,42 @@ def handle_recording():
         logger.error("Failed to retrieve a valid recording URL from Twilio.")
         return Response("Recording not found", status=404)
 
-    transcript = transcribe_with_deepgram(recording_url)
+    transcript_data = transcribe_with_deepgram(recording_url)
 
-    if transcript is None:
+    if transcript_data is None:
         logger.error("Transcription from Deepgram failed.")
         transcript = ""
     else:
+        transcript = transcript_data.get("transcript", "")
         logger.info("Transcription processed successfully.")
 
-    # Initialize the inquiry data (current property info) with minimal keys.
-    current_property_info = {
-        "address": None,
-        "property_type": None,
-        "budget": None,
-        "bedrooms": None
-    }
-    response_data = ai_interaction(transcript, current_property_info)
-    current_property_info.update(response_data.get("updated_data", {}))
-    
+    # Retrieve the current call summary.
+    current_summary = call_summaries.get(call_sid, "")
+    ai_response = ai_interaction(transcript, current_summary)
+    call_summaries[call_sid] = ai_response.get("updated_summary", current_summary)
+
     response = VoiceResponse()
-    if response_data.get("done", False):
-        response.say("Thank you for your inquiry. Goodbye!")
+    if ai_response.get("done", False):
+        greeting_text = "Thank you for your call. Goodbye!"
+        audio_data = generate_tts_audio(greeting_text)
+        audio_url = save_audio_to_file(audio_data)
+        response = VoiceResponse()
+        response.play(audio_url)
         response.hangup()
+
+        
     else:
-        if response_data.get("confirmation"):
-            response.say(response_data["confirmation"])
-        response.say(response_data.get("next_question", "Could you please provide more information?"))
-        # Record the next response automatically using silence detection.
+        if ai_response.get("confirmation"):
+            confirmation_text = ai_response["confirmation"]
+            audio_data = generate_tts_audio(confirmation_text)
+            audio_url = save_audio_to_file(audio_data)
+            response.play(audio_url)
+        
+        next_question = ai_response.get("next_question", "Could you please provide more information?")
+        audio_data = generate_tts_audio(next_question)
+        audio_url = save_audio_to_file(audio_data)
+        response.play(audio_url)
+        
         response.record(
             maxLength="15",
             action="/recording",
