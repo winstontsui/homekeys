@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
-import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
-import { ChevronUp, Home, Send, Mail, Clock, FileText, Search, Zap } from "lucide-react";
+import {
+  Table,
+  TableHeader,
+  TableRow,
+  TableHead,
+  TableBody,
+  TableCell,
+} from "@/components/ui/table";
+import {
+  ChevronUp,
+  Home,
+  Send,
+  Mail,
+  Clock,
+  FileText,
+  Search,
+  Zap,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { io } from "socket.io-client";
+
+interface Property {
+  id: number;
+  image: string;
+  address: string;
+  price: string;
+  status: string;
+  type: string;
+  bedsBaths: string;
+  sqft: string;
+}
 
 const Dashboard = () => {
-  const savedProperties = [
+  const [savedProperties, setSavedProperties] = useState<Property[]>([
     {
       id: 1,
       image: "/lovable-uploads/1.png",
@@ -15,7 +43,7 @@ const Dashboard = () => {
       status: "For Sale",
       type: "Single Family Home",
       bedsBaths: "3/3",
-      sqft: "2345"
+      sqft: "2345",
     },
     {
       id: 2,
@@ -25,17 +53,57 @@ const Dashboard = () => {
       status: "For Sale",
       type: "Condo",
       bedsBaths: "2/2",
-      sqft: "1019"
-    }
-  ];
+      sqft: "1019",
+    },
+  ]);
+
+  useEffect(() => {
+    // Adjust URL if your Flask backend is on a different host/port
+    const socket = io("http://localhost:5000", {
+      transports: ["websocket"], // ensure WebSocket is used
+    });
+
+    socket.on("connect", () => {
+      console.log("Connected to WebSocket server!");
+    });
+
+    // 3) Listen for "new_property" event from the server
+    socket.on("new_property", (newProp: Property) => {
+      console.log("Received new property from server:", newProp);
+
+      // Check if we already have that property by ID:
+      setSavedProperties((prevProps) => {
+        const exists = prevProps.some((p) => p.id === newProp.id);
+        if (!exists) {
+          return [...prevProps, newProp];
+        } else {
+          // If you want to update it if it already exists, handle that logic here
+          return prevProps.map((p) => (p.id === newProp.id ? newProp : p));
+        }
+      });
+    });
+
+    socket.on("disconnect", () => {
+      console.log("Disconnected from WebSocket server!");
+    });
+
+    // Cleanup on unmount
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Property Management Dashboard</h1>
-          <p className="text-gray-600 mt-2">Track your real estate transactions and manage tasks</p>
+          <h1 className="text-3xl font-bold text-gray-900">
+            Property Management Dashboard
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Track your real estate transactions and manage tasks
+          </p>
         </div>
 
         {/* Stats Cards */}
@@ -43,9 +111,13 @@ const Dashboard = () => {
           <Card className="p-6 relative overflow-hidden">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-semibold text-gray-800">Saved Properties</h3>
+                <h3 className="font-semibold text-gray-800">
+                  Saved Properties
+                </h3>
                 <p className="text-4xl font-bold mt-2">2</p>
-                <p className="text-sm text-gray-500 mt-1">Properties of interest</p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Properties of interest
+                </p>
               </div>
               <div className="bg-blue-100 p-3 rounded-full">
                 <Home className="h-5 w-5 text-blue-500" />
@@ -71,7 +143,9 @@ const Dashboard = () => {
               <div>
                 <h3 className="font-semibold text-gray-800">Offers Received</h3>
                 <p className="text-4xl font-bold mt-2">0</p>
-                <p className="text-sm text-gray-500 mt-1">Total offers received</p>
+                <p className="text-sm text-gray-500 mt-1">
+                  Total offers received
+                </p>
               </div>
               <div className="bg-blue-100 p-3 rounded-full">
                 <Mail className="h-5 w-5 text-blue-500" />
@@ -117,9 +191,9 @@ const Dashboard = () => {
                   <TableRow key={property.id}>
                     <TableCell>
                       <div className="flex items-center space-x-3">
-                        <img 
-                          src={property.image} 
-                          alt={property.address} 
+                        <img
+                          src={property.image}
+                          alt={property.address}
                           className="h-12 w-16 object-cover rounded"
                         />
                         <span>{property.address}</span>
@@ -136,16 +210,42 @@ const Dashboard = () => {
                     <TableCell>{property.sqft}</TableCell>
                     <TableCell>
                       <div className="flex space-x-2">
-                        <Button variant="outline" size="sm" className="text-xs flex items-center gap-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="text-xs flex items-center gap-1"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
                             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                             <polyline points="15 3 21 3 21 9" />
                             <line x1="10" y1="14" x2="21" y2="3" />
                           </svg>
                           View Listing
                         </Button>
-                        <Button variant="outline" size="sm" className="text-xs text-red-500 flex items-center gap-1">
-                          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="text-xs text-red-500 flex items-center gap-1"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-4 w-4"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                          >
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                           </svg>
                           Unsave
@@ -164,7 +264,9 @@ const Dashboard = () => {
           <div className="p-6 border-b">
             <h2 className="text-xl font-semibold">Understanding the Process</h2>
             <p className="text-gray-600 mt-1">
-              The property transaction process is divided into three main stages. Below, you'll find an overview of what to expect at each stage.
+              The property transaction process is divided into three main
+              stages. Below, you'll find an overview of what to expect at each
+              stage.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
@@ -174,29 +276,36 @@ const Dashboard = () => {
               </div>
               <h3 className="font-semibold text-lg mb-2">Offer & Agreement</h3>
               <p className="text-gray-600 mb-3">
-                The initial phase where the buyer and seller negotiate the terms of the property purchase.
+                The initial phase where the buyer and seller negotiate the terms
+                of the property purchase.
               </p>
               <p className="font-medium">Typically 7-14 days</p>
             </div>
-            
+
             <div>
               <div className="bg-blue-50 p-3 rounded-lg inline-block mb-4">
                 <Search className="h-6 w-6 text-blue-500" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Inspection & Review</h3>
+              <h3 className="font-semibold text-lg mb-2">
+                Inspection & Review
+              </h3>
               <p className="text-gray-600 mb-3">
-                This phase focuses on property inspections and document reviews to finalize the deal.
+                This phase focuses on property inspections and document reviews
+                to finalize the deal.
               </p>
               <p className="font-medium">Typically 14-30 days</p>
             </div>
-            
+
             <div>
               <div className="bg-blue-50 p-3 rounded-lg inline-block mb-4">
                 <Zap className="h-6 w-6 text-blue-500" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">Utilities & Closing</h3>
+              <h3 className="font-semibold text-lg mb-2">
+                Utilities & Closing
+              </h3>
               <p className="text-gray-600 mb-3">
-                The final steps to transfer ownership and complete the property transaction.
+                The final steps to transfer ownership and complete the property
+                transaction.
               </p>
               <p className="font-medium">Typically 10-21 days</p>
             </div>
@@ -208,7 +317,16 @@ const Dashboard = () => {
           <Button className="border rounded-lg px-6 py-2 flex items-center gap-2 bg-white hover:bg-gray-50 text-gray-800">
             Personalize Your Journey
             <div className="bg-blue-500 text-white rounded-full p-1">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-4 w-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                 <polyline points="15 3 21 3 21 9" />
                 <line x1="10" y1="14" x2="21" y2="3" />
