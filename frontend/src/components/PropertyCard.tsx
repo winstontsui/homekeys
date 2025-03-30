@@ -5,9 +5,10 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 export interface Property {
-  id: number;
+  id: number | string;
   type?: "Condo" | "Single Family Home";
   price: number;
+  description: string;
   address: string;
   image: string;
   bedrooms: number;
@@ -27,6 +28,14 @@ export interface Property {
     monthly_hoa_fees?: number;
   };
   amenities?: string[];
+  // For backward compatibility with existing code
+  beds?: number;
+  baths?: number;
+  sqft?: number;
+  features?: string[];
+  city?: string;
+  state?: string;
+  zip?: string;
 }
 
 interface PropertyCardProps {
@@ -34,7 +43,11 @@ interface PropertyCardProps {
 }
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
-  console.log(property);
+  // Determine beds/bedrooms, baths/bathrooms, and sqft/square_footage for compatibility
+  const beds = property.bedrooms || property.beds || 0;
+  const baths = property.bathrooms || property.baths || 0;
+  const sqft = property.square_footage || property.sqft || 0;
+
   return (
     <div className="rounded-lg overflow-hidden border shadow-sm hover:shadow-md transition-shadow">
       <div className="relative">
@@ -66,23 +79,25 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
         <p className="text-sm text-gray-700 mb-2">{property.address}</p>
 
         {/* LOCATION */}
-        {/* <p className="text-xs text-gray-500 mb-3">
-          {property.city}, {property.state} {property.zip}
-        </p> */}
+        {property.city && property.state && property.zip && (
+          <p className="text-xs text-gray-500 mb-3">
+            {property.city}, {property.state} {property.zip}
+          </p>
+        )}
 
-        {/* bedrooms / BATHS / square_footage */}
+        {/* Bedrooms / Bathrooms / Square Footage */}
         <div className="flex items-center gap-3 text-sm text-gray-700 mb-4">
           <div className="flex items-center gap-1">
             <Bed className="h-4 w-4" />
-            <span>{property.bedrooms} beds</span>
+            <span>{beds} beds</span>
           </div>
           <div className="flex items-center gap-1">
             <Bath className="h-4 w-4" />
-            <span>{property.bathrooms} bathrooms</span>
+            <span>{baths} {property.bathrooms ? 'bathrooms' : 'baths'}</span>
           </div>
           <div className="flex items-center gap-1">
             <Move className="h-4 w-4" />
-            <span>{property.square_footage?.toLocaleString()} sq ft</span>
+            <span>{sqft?.toLocaleString()} sq ft</span>
           </div>
         </div>
 
@@ -119,13 +134,19 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
 
         {/* FEATURES: Garage, Pool, etc. */}
         <div className="flex items-center gap-2 flex-wrap mt-3">
-          {property.amenities?.map((amenity) => {
-            return (
-              <Badge className="flex items-center text-xs">
+          {property.amenities && property.amenities.length > 0 ? (
+            property.amenities.map((amenity, index) => (
+              <Badge key={index} className="flex items-center text-xs">
                 <span>{amenity}</span>
               </Badge>
-            );
-          })}
+            ))
+          ) : property.features && property.features.length > 0 ? (
+            property.features.map((feature, index) => (
+              <Badge key={index} className="flex items-center text-xs">
+                <span>{feature}</span>
+              </Badge>
+            ))
+          ) : null}
         </div>
 
         {/* CTA BUTTONS */}
@@ -145,7 +166,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
             <span className="mr-1">🤖</span> Ask AI
           </Button>
           <Link
-            to={`/property-details/${property.id}`}
+            to={`/map/${property.id}`}
             className="text-xs py-1 px-3 h-8 flex items-center bg-gray-50 rounded-md border"
           >
             Details

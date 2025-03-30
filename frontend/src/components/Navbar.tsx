@@ -17,6 +17,9 @@ const Navbar = () => {
         <Link to="/" className="text-gray-700 hover:text-gray-900">
           Explore Listings
         </Link>
+        <Link to="/map" className="text-gray-700 hover:text-gray-900">
+          Map View
+        </Link>
         <Link to="/dashboard" className="text-blue-500 font-medium">
           Dashboard
         </Link>
