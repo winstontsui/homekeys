@@ -1,9 +1,8 @@
-
 import React, { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import PropertyCard, { Property } from "./PropertyCard";
+import propertiesData from "./properties.json";
 
-// Sample property data
 const sampleProperties: Property[] = [
   {
     id: "1",
@@ -17,7 +16,8 @@ const sampleProperties: Property[] = [
     baths: 2,
     sqft: 1019,
     features: ["Pool", "Carport"],
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    image:
+      "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
     id: "2",
@@ -31,7 +31,8 @@ const sampleProperties: Property[] = [
     baths: 5,
     sqft: 2918,
     features: ["Garage"],
-    image: "https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80"
+    image:
+      "https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
   },
   {
     id: "3",
@@ -45,7 +46,8 @@ const sampleProperties: Property[] = [
     baths: 3,
     sqft: 2345,
     features: ["Garage"],
-    image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    image:
+      "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
     id: "4",
@@ -59,7 +61,8 @@ const sampleProperties: Property[] = [
     baths: 2,
     sqft: 1200,
     features: ["Garage"],
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
     id: "5",
@@ -73,7 +76,8 @@ const sampleProperties: Property[] = [
     baths: 3,
     sqft: 2800,
     features: ["Pool", "Garage"],
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
   },
   {
     id: "6",
@@ -87,13 +91,37 @@ const sampleProperties: Property[] = [
     baths: 4,
     sqft: 3200,
     features: ["Pool", "Garage"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  }
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+  },
 ];
+
+const images = sampleProperties.map((property) => {
+  return property.image;
+});
+
+function shuffle<T>(array: T[]): T[] {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+const shuffledImages = shuffle(images);
+
+const properties = propertiesData.properties.map((property, index) => {
+  const image = shuffledImages[index % shuffledImages.length];
+  return {
+    ...property,
+    image,
+  };
+});
 
 const PropertyList = () => {
   const [sortOption, setSortOption] = useState("Newest");
-  
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-10 py-8">
       <div className="flex justify-between items-center mb-6">
@@ -105,9 +133,9 @@ const PropertyList = () => {
           </button>
         </div>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {sampleProperties.map((property) => (
+        {properties.map((property) => (
           <PropertyCard key={property.id} property={property} />
         ))}
       </div>
