@@ -1,82 +1,1092 @@
 {
-    "properties": [
-      {
-        "address": "869 Tolman Drive, Stanford, CA 94305-1079",
-        "price": 2975000,
-        "bedrooms": 4,
-        "bathrooms": 2,
-        "square_footage": 2588,
-        "lot_size": 12914,
-        "garage": 2,
-        "description": "Gorgeous 4-bedroom home located minutes from the central campus of Stanford.",
-        "amenities": ["High ceilings", "Garden view", "Quiet neighborhood"],
-        "financial": {
-          "monthly_ground_rent": 385.16,
-          "lease_type": "Standard"
-        }
+  "properties": [
+    {
+      "address": "869 Tolman Drive, Stanford, CA 94305-1079",
+      "price": 2975000,
+      "bedrooms": 4,
+      "bathrooms": 2,
+      "square_footage": 2588,
+      "lot_size": 12914,
+      "garage": 2,
+      "description": "Gorgeous 4-bedroom home located minutes from the central campus of Stanford.",
+      "amenities": ["High ceilings", "Garden view", "Quiet neighborhood"],
+      "financial": {
+        "monthly_ground_rent": 385.16,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
       },
-      {
-        "address": "2254 Oberlin Street, Palo Alto, CA 94306-1319",
-        "price": 2213000,
-        "bedrooms": 3,
-        "bathrooms": 3,
-        "square_footage": 2345,
-        "lot_size": 6250,
-        "garage": 1,
-        "description": "New Gambrel Cottage style home with smart grey water system and solar power.",
-        "amenities": ["Hardwood floors", "Solar power", "Smart Grey Water System"],
-        "financial": {
-          "monthly_ground_rent": 0,
-          "lease_type": "Restricted"
-        }
-      },
-      {
-        "address": "29 Pearce Mitchell Place, Stanford, CA 94305-8522",
-        "price": 525000,
-        "bedrooms": 2,
-        "bathrooms": 2,
-        "square_footage": 1100,
-        "lot_size": null,
-        "garage": 1,
-        "description": "Charming ground-floor condo with open layout, spacious bedrooms, and private back patio. Available only to qualified Stanford faculty.",
-        "amenities": ["Private patio", "Breakfast bar", "Community pool"],
-        "financial": {
-          "monthly_ground_rent": 288.28,
-          "lease_type": "Standard",
-          "monthly_hoa_fees": 1052
-        }
-      },
-      {
-        "address": "1017 Cathcart Way, Stanford, CA 94305",
-        "price": 1780000,
-        "bedrooms": 3,
-        "bathrooms": 2.5,
-        "square_footage": 1850,
-        "lot_size": 7200,
-        "garage": 2,
-        "description": "Beautifully updated two-story home near Stanford Golf Course, featuring modern kitchen, open-concept living, and landscaped backyard.",
-        "amenities": ["Modern kitchen", "Fireplace", "Landscaped backyard"],
-        "financial": {
-          "monthly_ground_rent": 310.5,
-          "lease_type": "Standard"
-        }
-      },
-      {
-        "address": "77 Peter Coutts Circle, Stanford, CA 94305",
-        "price": 645000,
-        "bedrooms": 2,
-        "bathrooms": 1.5,
-        "square_footage": 1200,
-        "lot_size": null,
-        "garage": 1,
-        "description": "Well-maintained townhouse-style condo with a private patio and upstairs bedrooms. Located in a quiet, tree-lined community close to campus.",
-        "amenities": ["Townhouse layout", "Community greenbelt", "Private patio"],
-        "financial": {
-          "monthly_ground_rent": 275.0,
-          "lease_type": "Standard",
-          "monthly_hoa_fees": 980
-        }
+      "nearby_freeways": ["280", "101"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Escondido Elementary School",
+        "Greene Middle School",
+        "Palo Alto High School"
+      ],
+      "house_age": 12,
+      "zillow_estimate": 3050000,
+      "stories": 1,
+      "hazard_zones": ["Earthquake"],
+      "view": "Mountain View",
+      "open_house_info": {
+        "date": "2025-04-07",
+        "time": "1pm-3pm"
       }
-    ]
-  }
-  
+    },
+    {
+      "address": "2254 Oberlin Street, Palo Alto, CA 94306-1319",
+      "price": 2213000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "square_footage": 2345,
+      "lot_size": 6250,
+      "garage": 1,
+      "description": "New Gambrel Cottage style home with smart grey water system and solar power.",
+      "amenities": [
+        "Hardwood floors",
+        "Solar power",
+        "Smart Grey Water System"
+      ],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Restricted",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus", "Bike"],
+      "schools_in_area": [
+        "Hoover Elementary School",
+        "JLS Middle School",
+        "Gunn High School"
+      ],
+      "house_age": 5,
+      "zillow_estimate": 2250000,
+      "stories": 2,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-09",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "29 Pearce Mitchell Place, Stanford, CA 94305-8522",
+      "price": 525000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "square_footage": 1100,
+      "lot_size": null,
+      "garage": 1,
+      "description": "Charming ground-floor condo with open layout, spacious bedrooms, and private back patio. Available only to qualified Stanford faculty.",
+      "amenities": ["Private patio", "Breakfast bar", "Community pool"],
+      "financial": {
+        "monthly_ground_rent": 288.28,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 1052
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Campus Shuttle", "Bus"],
+      "schools_in_area": [
+        "Escondido Elementary School",
+        "Greene Middle School"
+      ],
+      "house_age": 10,
+      "zillow_estimate": 540000,
+      "stories": 1,
+      "hazard_zones": ["Fire"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-10",
+        "time": "11am-1pm"
+      }
+    },
+    {
+      "address": "1017 Cathcart Way, Stanford, CA 94305",
+      "price": 1780000,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "square_footage": 1850,
+      "lot_size": 7200,
+      "garage": 2,
+      "description": "Beautifully updated two-story home near Stanford Golf Course, featuring modern kitchen, open-concept living, and landscaped backyard.",
+      "amenities": ["Modern kitchen", "Fireplace", "Landscaped backyard"],
+      "financial": {
+        "monthly_ground_rent": 310.5,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101", "280"],
+      "commute_routes": ["Caltrain", "Light Rail"],
+      "schools_in_area": [
+        "Escondido Elementary School",
+        "Greene Middle School",
+        "Palo Alto High School"
+      ],
+      "house_age": 15,
+      "zillow_estimate": 1800000,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": "Golf Course View",
+      "open_house_info": {
+        "date": "2025-04-12",
+        "time": "3pm-5pm"
+      }
+    },
+    {
+      "address": "77 Peter Coutts Circle, Stanford, CA 94305",
+      "price": 645000,
+      "bedrooms": 2,
+      "bathrooms": 1.5,
+      "square_footage": 1200,
+      "lot_size": null,
+      "garage": 1,
+      "description": "Well-maintained townhouse-style condo with a private patio and upstairs bedrooms. Located in a quiet, tree-lined community close to campus.",
+      "amenities": ["Townhouse layout", "Community greenbelt", "Private patio"],
+      "financial": {
+        "monthly_ground_rent": 275.0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 980
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Bus", "Campus Shuttle"],
+      "schools_in_area": [
+        "Escondido Elementary School",
+        "Greene Middle School"
+      ],
+      "house_age": 8,
+      "zillow_estimate": 660000,
+      "stories": 2,
+      "hazard_zones": [],
+      "view": "Courtyard View",
+      "open_house_info": {
+        "date": "2025-04-15",
+        "time": "1pm-3pm"
+      }
+    },
+    {
+      "address": "315 Montrose Avenue, Redwood City, CA 94063",
+      "price": 1450000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_footage": 1600,
+      "lot_size": 5000,
+      "garage": 2,
+      "description": "Bright ranch-style home with a modern kitchen and newly upgraded bathrooms. Conveniently located near downtown Redwood City.",
+      "amenities": ["Modern kitchen", "Hardwood floors", "Attached garage"],
+      "financial": {
+        "monthly_ground_rent": 210,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101", "280"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Hawes Elementary School",
+        "John F. Kennedy Middle School",
+        "Woodside High School"
+      ],
+      "house_age": 25,
+      "stories": 1,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-11",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "5678 Westbury Lane, Palo Alto, CA 94306",
+      "price": 3100000,
+      "bedrooms": 5,
+      "bathrooms": 3.5,
+      "square_footage": 3200,
+      "lot_size": 7800,
+      "garage": 2,
+      "description": "Expansive two-story home located in a peaceful cul-de-sac. Features a gourmet kitchen, formal dining room, and outdoor entertainment area.",
+      "amenities": ["Gourmet kitchen", "Large deck", "Fireplace"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus", "Light Rail"],
+      "schools_in_area": [
+        "Barron Park Elementary",
+        "Terman Middle School",
+        "Gunn High School"
+      ],
+      "house_age": 7,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": "City View",
+      "open_house_info": {
+        "date": "2025-04-13",
+        "time": "1pm-3pm"
+      }
+    },
+    {
+      "address": "123 Foster Drive, Redwood City, CA 94063",
+      "price": 975000,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "square_footage": 950,
+      "lot_size": 3200,
+      "garage": 1,
+      "description": "Cozy starter home with a private fenced yard and updated kitchen. A short walk from local shops and restaurants.",
+      "amenities": ["Fenced yard", "Granite countertops", "Hardwood floors"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus", "Caltrain"],
+      "schools_in_area": ["Roosevelt Elementary School", "Sequoia High School"],
+      "house_age": 30,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-17",
+        "time": "11am-1pm"
+      }
+    },
+    {
+      "address": "990 Edgewood Road, Redwood City, CA 94062",
+      "price": 2650000,
+      "bedrooms": 4,
+      "bathrooms": 2.5,
+      "square_footage": 2800,
+      "lot_size": 9000,
+      "garage": 2,
+      "description": "Stunning ranch-style home with a pool and secluded backyard. Located in the highly desirable Edgewood Park neighborhood.",
+      "amenities": ["Pool", "Spa", "Outdoor kitchen"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["280", "101"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": ["Roy Cloud Elementary", "Woodside High School"],
+      "house_age": 20,
+      "stories": 1,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-18",
+        "time": "3pm-5pm"
+      }
+    },
+    {
+      "address": "4456 Stonebrook Drive, Los Altos Hills, CA 94024",
+      "price": 4150000,
+      "bedrooms": 5,
+      "bathrooms": 4,
+      "square_footage": 4200,
+      "lot_size": 20000,
+      "garage": 3,
+      "description": "Expansive luxury estate with a sweeping view of the hills, private driveway, and tranquil surroundings. Perfect for entertaining.",
+      "amenities": ["Wine cellar", "Outdoor fireplace", "EV charging"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Bus"],
+      "schools_in_area": [
+        "Gardner Bullis Elementary",
+        "Ardis G. Egan Junior High",
+        "Los Altos High School"
+      ],
+      "house_age": 10,
+      "stories": 2,
+      "hazard_zones": ["Fire"],
+      "view": "Mountain View",
+      "open_house_info": {
+        "date": "2025-04-20",
+        "time": "12pm-2pm"
+      }
+    },
+    {
+      "address": "621 Glen Way, Palo Alto, CA 94306",
+      "price": 2150000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_footage": 1700,
+      "lot_size": 6000,
+      "garage": 2,
+      "description": "Single-story home close to Midtown Palo Alto. Features a bright living area with skylights and a spacious backyard.",
+      "amenities": ["Skylights", "Upgraded kitchen", "Spacious backyard"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus", "Bike"],
+      "schools_in_area": [
+        "El Carmelo Elementary",
+        "JLS Middle School",
+        "Gunn High School"
+      ],
+      "house_age": 18,
+      "stories": 1,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-21",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "11 Frenchmans Road, Palo Alto, CA 94303",
+      "price": 3900000,
+      "bedrooms": 4,
+      "bathrooms": 3.5,
+      "square_footage": 3000,
+      "lot_size": 8500,
+      "garage": 2,
+      "description": "Elegant and modern home with open-concept living space, a gourmet island kitchen, and lush landscaping throughout the property.",
+      "amenities": [
+        "Gourmet island kitchen",
+        "Landscaped garden",
+        "Smart home system"
+      ],
+      "financial": {
+        "monthly_ground_rent": 300,
+        "lease_type": "Restricted",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Duveneck Elementary",
+        "Greene Middle School",
+        "Palo Alto High School"
+      ],
+      "house_age": 3,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-25",
+        "time": "11am-1pm"
+      }
+    },
+    {
+      "address": "2099 Amherst Street, Palo Alto, CA 94306",
+      "price": 1825000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_footage": 1900,
+      "lot_size": 7000,
+      "garage": 2,
+      "description": "Located near Stanford, this home has a fully remodeled interior and a beautifully landscaped front yard with a seating area.",
+      "amenities": ["Remodeled interior", "Outdoor seating area", "Fireplace"],
+      "financial": {
+        "monthly_ground_rent": 275,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["280", "101"],
+      "commute_routes": ["Bus", "Bike"],
+      "schools_in_area": [
+        "Fairmeadow Elementary",
+        "JLS Middle School",
+        "Gunn High School"
+      ],
+      "house_age": 14,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-27",
+        "time": "1pm-3pm"
+      }
+    },
+    {
+      "address": "108 Lakeview Terrace, Redwood City, CA 94061",
+      "price": 1350000,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "square_footage": 1450,
+      "lot_size": 4200,
+      "garage": 2,
+      "description": "Charming two-story home with a small private lake nearby, surrounded by scenic walking trails and parks.",
+      "amenities": ["Lake access", "Community trails", "Upgraded appliances"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 150
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Bus", "Caltrain"],
+      "schools_in_area": [
+        "Henry Ford Elementary",
+        "Kennedy Middle School",
+        "Sequoia High School"
+      ],
+      "house_age": 12,
+      "stories": 2,
+      "hazard_zones": ["Fire"],
+      "view": "Lake View",
+      "open_house_info": {
+        "date": "2025-04-29",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "315 Charleston Road, Palo Alto, CA 94306",
+      "price": 2890000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "square_footage": 2600,
+      "lot_size": 6800,
+      "garage": 2,
+      "description": "Spacious property in south Palo Alto boasting high ceilings, a versatile floor plan, and a large covered patio for entertaining.",
+      "amenities": ["High ceilings", "Covered patio", "Solar water heater"],
+      "financial": {
+        "monthly_ground_rent": 320,
+        "lease_type": "Restricted",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus", "Bike"],
+      "schools_in_area": [
+        "Briones Elementary",
+        "Terman Middle School",
+        "Gunn High School"
+      ],
+      "house_age": 6,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-04-30",
+        "time": "3pm-5pm"
+      }
+    },
+    {
+      "address": "812 Cambridge Way, Menlo Park, CA 94025",
+      "price": 2425000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "square_footage": 2500,
+      "lot_size": 7200,
+      "garage": 2,
+      "description": "Beautifully renovated home near downtown Menlo Park, featuring vaulted ceilings and a lush garden backyard.",
+      "amenities": ["Vaulted ceilings", "Garden backyard", "Renovated kitchen"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101", "280"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Oak Knoll Elementary",
+        "Hillview Middle School",
+        "Menlo-Atherton High School"
+      ],
+      "house_age": 15,
+      "stories": 2,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-02",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "74 Vista Verde Drive, Portola Valley, CA 94028",
+      "price": 4980000,
+      "bedrooms": 5,
+      "bathrooms": 4.5,
+      "square_footage": 4500,
+      "lot_size": 43560,
+      "garage": 3,
+      "description": "Luxury estate in the hills of Portola Valley with panoramic mountain views, chef’s kitchen, and infinity pool.",
+      "amenities": ["Infinity pool", "Chef’s kitchen", "Home gym"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 175
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Car"],
+      "schools_in_area": [
+        "Ormondale Elementary",
+        "Corte Madera School",
+        "Woodside High School"
+      ],
+      "house_age": 8,
+      "stories": 2,
+      "hazard_zones": ["Fire"],
+      "view": "Mountain View",
+      "open_house_info": {
+        "date": "2025-05-04",
+        "time": "1pm-3pm"
+      }
+    },
+    {
+      "address": "3884 Sequoia Street, Palo Alto, CA 94303",
+      "price": 1985000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_footage": 1800,
+      "lot_size": 6300,
+      "garage": 2,
+      "description": "Updated Eichler-style home with radiant floor heating, floor-to-ceiling windows, and a private central courtyard.",
+      "amenities": [
+        "Radiant heating",
+        "Floor-to-ceiling windows",
+        "Private courtyard"
+      ],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus", "Bike"],
+      "schools_in_area": [
+        "Ohlone Elementary",
+        "JLS Middle School",
+        "Gunn High School"
+      ],
+      "house_age": 45,
+      "stories": 1,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-05",
+        "time": "3pm-5pm"
+      }
+    },
+    {
+      "address": "2024 Embarcadero Road, Palo Alto, CA 94303",
+      "price": 1650000,
+      "bedrooms": 3,
+      "bathrooms": 1.5,
+      "square_footage": 1400,
+      "lot_size": 5800,
+      "garage": 1,
+      "description": "Charming mid-century home with a remodeled kitchen and beautiful hardwood flooring throughout.",
+      "amenities": ["Hardwood floors", "Remodeled kitchen", "Fenced backyard"],
+      "financial": {
+        "monthly_ground_rent": 285,
+        "lease_type": "Restricted",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus", "Caltrain"],
+      "schools_in_area": [
+        "Walter Hays Elementary",
+        "Greene Middle School",
+        "Palo Alto High School"
+      ],
+      "house_age": 50,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-06",
+        "time": "12pm-2pm"
+      }
+    },
+    {
+      "address": "916 Canyon Road, Redwood City, CA 94062",
+      "price": 2790000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "square_footage": 3000,
+      "lot_size": 10000,
+      "garage": 2,
+      "description": "Peaceful retreat in Emerald Hills featuring an expansive backyard, vaulted ceilings, and serene canyon views.",
+      "amenities": ["Vaulted ceilings", "Large backyard", "Deck with view"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 200
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": ["Roy Cloud School", "Woodside High School"],
+      "house_age": 18,
+      "stories": 2,
+      "hazard_zones": ["Fire"],
+      "view": "Canyon View",
+      "open_house_info": {
+        "date": "2025-05-07",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "1450 Tasso Street, Palo Alto, CA 94301",
+      "price": 3500000,
+      "bedrooms": 5,
+      "bathrooms": 4,
+      "square_footage": 3600,
+      "lot_size": 8500,
+      "garage": 2,
+      "description": "Spacious Professorville home with a detached guest suite and charming craftsman architecture.",
+      "amenities": ["Guest house", "Craftsman detailing", "Fireplace"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Caltrain", "Bike"],
+      "schools_in_area": [
+        "Addison Elementary",
+        "Greene Middle School",
+        "Palo Alto High School"
+      ],
+      "house_age": 100,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-08",
+        "time": "1pm-3pm"
+      }
+    },
+    {
+      "address": "71 Alta Mesa Drive, Los Altos, CA 94024",
+      "price": 2750000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "square_footage": 2400,
+      "lot_size": 7800,
+      "garage": 2,
+      "description": "Lovely home on a quiet street near top-rated Los Altos schools, featuring an open-concept kitchen and sunroom.",
+      "amenities": ["Sunroom", "Updated kitchen", "Mature landscaping"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Bus"],
+      "schools_in_area": [
+        "Springer Elementary",
+        "Blach Intermediate",
+        "Mountain View High School"
+      ],
+      "house_age": 22,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-09",
+        "time": "3pm-5pm"
+      }
+    },
+    {
+      "address": "533 Encina Avenue, Menlo Park, CA 94025",
+      "price": 1950000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_footage": 1600,
+      "lot_size": 5900,
+      "garage": 1,
+      "description": "Charming single-story home near Burgess Park. Features original hardwood floors and a recently remodeled kitchen.",
+      "amenities": ["Original hardwood", "Updated kitchen", "Close to parks"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Caltrain", "Bike"],
+      "schools_in_area": [
+        "Laurel Elementary",
+        "Hillview Middle School",
+        "Menlo-Atherton High School"
+      ],
+      "house_age": 35,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-10",
+        "time": "11am-1pm"
+      }
+    },
+    {
+      "address": "3846 El Centro Street, Palo Alto, CA 94306",
+      "price": 2150000,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "square_footage": 2000,
+      "lot_size": 6200,
+      "garage": 2,
+      "description": "Contemporary home in Barron Park with energy-efficient upgrades and beautifully landscaped backyard.",
+      "amenities": ["Solar panels", "EV charger", "Landscaped backyard"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["280", "101"],
+      "commute_routes": ["Bus", "Bike"],
+      "schools_in_area": [
+        "Barron Park Elementary",
+        "Ellen Fletcher Middle School",
+        "Gunn High School"
+      ],
+      "house_age": 6,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-11",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "2000 Vista Hill Court, Belmont, CA 94002",
+      "price": 1725000,
+      "bedrooms": 3,
+      "bathrooms": 2.5,
+      "square_footage": 2100,
+      "lot_size": 5400,
+      "garage": 2,
+      "description": "Tucked away in a quiet cul-de-sac with sweeping views of the bay, this home offers privacy and open-concept living.",
+      "amenities": ["Bay view", "Open-concept", "Private deck"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 175
+      },
+      "nearby_freeways": ["92", "280"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Central Elementary",
+        "Ralston Middle School",
+        "Carlmont High School"
+      ],
+      "house_age": 17,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": "Bay View",
+      "open_house_info": {
+        "date": "2025-05-12",
+        "time": "12pm-2pm"
+      }
+    },
+    {
+      "address": "1285 Evergreen Lane, Mountain View, CA 94040",
+      "price": 1980000,
+      "bedrooms": 4,
+      "bathrooms": 2.5,
+      "square_footage": 2100,
+      "lot_size": 6700,
+      "garage": 2,
+      "description": "Updated ranch-style home in Waverly Park with an open floor plan and large backyard perfect for gatherings.",
+      "amenities": ["Open floor plan", "Updated kitchen", "Spacious backyard"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["85", "280"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Huff Elementary",
+        "Graham Middle School",
+        "Mountain View High School"
+      ],
+      "house_age": 20,
+      "stories": 1,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-14",
+        "time": "1pm-3pm"
+      }
+    },
+    {
+      "address": "306 Laurel Avenue, San Carlos, CA 94070",
+      "price": 1525000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_footage": 1650,
+      "lot_size": 5200,
+      "garage": 1,
+      "description": "Charming home in the heart of San Carlos with hardwood floors and walking distance to downtown shops and Caltrain.",
+      "amenities": [
+        "Hardwood floors",
+        "Walkable location",
+        "Updated appliances"
+      ],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101", "280"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "White Oaks Elementary",
+        "Central Middle School",
+        "Sequoia High School"
+      ],
+      "house_age": 40,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-16",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "401 Sunset Drive, Menlo Park, CA 94025",
+      "price": 2495000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "square_footage": 2800,
+      "lot_size": 7500,
+      "garage": 2,
+      "description": "Elegant craftsman home in the Allied Arts neighborhood with vaulted ceilings and a serene backyard patio.",
+      "amenities": ["Vaulted ceilings", "Backyard patio", "Formal dining room"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Caltrain", "Bike"],
+      "schools_in_area": [
+        "Oak Knoll Elementary",
+        "Hillview Middle School",
+        "Menlo-Atherton High School"
+      ],
+      "house_age": 12,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-18",
+        "time": "3pm-5pm"
+      }
+    },
+    {
+      "address": "75 Canyon View Drive, Belmont, CA 94002",
+      "price": 1785000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_footage": 1900,
+      "lot_size": 6200,
+      "garage": 2,
+      "description": "Mid-century home with sweeping canyon views and large rear deck ideal for entertaining.",
+      "amenities": ["Canyon views", "Deck", "Mid-century charm"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["92", "280"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Fox Elementary",
+        "Ralston Middle School",
+        "Carlmont High School"
+      ],
+      "house_age": 45,
+      "stories": 2,
+      "hazard_zones": ["Fire"],
+      "view": "Canyon View",
+      "open_house_info": {
+        "date": "2025-05-19",
+        "time": "12pm-2pm"
+      }
+    },
+    {
+      "address": "1005 Park Avenue, Mountain View, CA 94043",
+      "price": 1280000,
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "square_footage": 1100,
+      "lot_size": null,
+      "garage": 1,
+      "description": "Top-floor condo with vaulted ceilings and private balcony, located minutes from downtown Mountain View.",
+      "amenities": ["Vaulted ceilings", "Private balcony", "Community pool"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Condo",
+        "monthly_hoa_fees": 540
+      },
+      "nearby_freeways": ["85", "101"],
+      "commute_routes": ["Light Rail", "Bike"],
+      "schools_in_area": [
+        "Theuerkauf Elementary",
+        "Crittenden Middle School",
+        "Mountain View High School"
+      ],
+      "house_age": 10,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": "Tree View",
+      "open_house_info": {
+        "date": "2025-05-20",
+        "time": "2pm-4pm"
+      }
+    },
+    {
+      "address": "623 Hilltop Drive, Redwood City, CA 94062",
+      "price": 2895000,
+      "bedrooms": 5,
+      "bathrooms": 3.5,
+      "square_footage": 3500,
+      "lot_size": 9200,
+      "garage": 3,
+      "description": "Contemporary hillside home with smart technology, open living space, and spectacular bay views.",
+      "amenities": ["Smart home", "Bay view", "Terraced garden"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Car", "Bus"],
+      "schools_in_area": [
+        "Roosevelt Elementary",
+        "Kennedy Middle School",
+        "Woodside High School"
+      ],
+      "house_age": 6,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": "Bay View",
+      "open_house_info": {
+        "date": "2025-05-21",
+        "time": "1pm-3pm"
+      }
+    },
+    {
+      "address": "111 Park Hill Road, Los Altos, CA 94022",
+      "price": 3580000,
+      "bedrooms": 4,
+      "bathrooms": 3.5,
+      "square_footage": 3200,
+      "lot_size": 8600,
+      "garage": 2,
+      "description": "Stylish two-story home with gourmet kitchen, designer finishes, and a sunny courtyard.",
+      "amenities": ["Designer finishes", "Gourmet kitchen", "Courtyard"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 100
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Bus", "Bike"],
+      "schools_in_area": [
+        "Santa Rita Elementary",
+        "Egan Junior High",
+        "Los Altos High School"
+      ],
+      "house_age": 9,
+      "stories": 2,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-22",
+        "time": "3pm-5pm"
+      }
+    },
+    {
+      "address": "88 Valley View Court, Portola Valley, CA 94028",
+      "price": 5120000,
+      "bedrooms": 6,
+      "bathrooms": 5.5,
+      "square_footage": 5000,
+      "lot_size": 43560,
+      "garage": 3,
+      "description": "Secluded estate on a private road with full guest suite, vineyard, and panoramic mountain views.",
+      "amenities": ["Guest suite", "Private vineyard", "Outdoor kitchen"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Fee Simple",
+        "monthly_hoa_fees": 250
+      },
+      "nearby_freeways": ["280"],
+      "commute_routes": ["Car"],
+      "schools_in_area": ["Corte Madera School", "Woodside High School"],
+      "house_age": 4,
+      "stories": 2,
+      "hazard_zones": ["Fire"],
+      "view": "Mountain View",
+      "open_house_info": {
+        "date": "2025-05-24",
+        "time": "12pm-2pm"
+      }
+    },
+    {
+      "address": "444 Cypress Lane, East Palo Alto, CA 94303",
+      "price": 875000,
+      "bedrooms": 2,
+      "bathrooms": 1,
+      "square_footage": 900,
+      "lot_size": 4000,
+      "garage": 1,
+      "description": "Starter home with new roof, fenced front yard, and easy access to 101 and Ravenswood shopping center.",
+      "amenities": ["New roof", "Fenced yard", "Proximity to shopping"],
+      "financial": {
+        "monthly_ground_rent": 0,
+        "lease_type": "Standard",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Bus"],
+      "schools_in_area": [
+        "Green Oaks Academy",
+        "Costano School",
+        "East Palo Alto Academy"
+      ],
+      "house_age": 60,
+      "stories": 1,
+      "hazard_zones": [],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-25",
+        "time": "11am-1pm"
+      }
+    },
+    {
+      "address": "2110 Juniper Drive, Palo Alto, CA 94303",
+      "price": 2350000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "square_footage": 2400,
+      "lot_size": 7500,
+      "garage": 2,
+      "description": "Lovely home in a tree-lined neighborhood with skylights, home office, and newly renovated bathrooms.",
+      "amenities": ["Skylights", "Home office", "Renovated bathrooms"],
+      "financial": {
+        "monthly_ground_rent": 290,
+        "lease_type": "Restricted",
+        "monthly_hoa_fees": 0
+      },
+      "nearby_freeways": ["101"],
+      "commute_routes": ["Caltrain", "Bus"],
+      "schools_in_area": [
+        "Duveneck Elementary",
+        "Greene Middle School",
+        "Palo Alto High School"
+      ],
+      "house_age": 17,
+      "stories": 2,
+      "hazard_zones": ["Earthquake"],
+      "view": null,
+      "open_house_info": {
+        "date": "2025-05-26",
+        "time": "2pm-4pm"
+      }
+    }
+  ]
+}
