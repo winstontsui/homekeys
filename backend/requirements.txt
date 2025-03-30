@@ -3,3 +3,5 @@ twilio
 requests
 python-dotenv
 elevenlabs
+pymongo[srv]
+mongoengine
