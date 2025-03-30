@@ -1,34 +1,82 @@
 {
     "properties": [
-        {
-            "address": "869 Tolman Drive, Stanford, CA 94305-1079",
-            "price": 2975000,
-            "bedrooms": 4,
-            "bathrooms": 2,
-            "square_footage": 2588,
-            "lot_size": 12914,
-            "garage": 2,
-            "description": "Gorgeous 4-bedroom home located minutes from the central campus of Stanford.",
-            "amenities": ["High ceilings", "Garden view", "Quiet neighborhood"],
-            "financial": {
-                "monthly_ground_rent": 385.16,
-                "lease_type": "Standard"
-            }
-        },
-        {
-            "address": "2254 Oberlin Street, Palo Alto, CA 94306-1319",
-            "price": 2213000,
-            "bedrooms": 3,
-            "bathrooms": 3,
-            "square_footage": 2345,
-            "lot_size": 6250,
-            "garage": 1,
-            "description": "New Gambrel Cottage style home with smart grey water system and solar power.",
-            "amenities": ["Hardwood floors", "Solar power", "Smart Grey Water System"],
-            "financial": {
-                "monthly_ground_rent": 0,
-                "lease_type": "Restricted"
-            }
+      {
+        "address": "869 Tolman Drive, Stanford, CA 94305-1079",
+        "price": 2975000,
+        "bedrooms": 4,
+        "bathrooms": 2,
+        "square_footage": 2588,
+        "lot_size": 12914,
+        "garage": 2,
+        "description": "Gorgeous 4-bedroom home located minutes from the central campus of Stanford.",
+        "amenities": ["High ceilings", "Garden view", "Quiet neighborhood"],
+        "financial": {
+          "monthly_ground_rent": 385.16,
+          "lease_type": "Standard"
         }
+      },
+      {
+        "address": "2254 Oberlin Street, Palo Alto, CA 94306-1319",
+        "price": 2213000,
+        "bedrooms": 3,
+        "bathrooms": 3,
+        "square_footage": 2345,
+        "lot_size": 6250,
+        "garage": 1,
+        "description": "New Gambrel Cottage style home with smart grey water system and solar power.",
+        "amenities": ["Hardwood floors", "Solar power", "Smart Grey Water System"],
+        "financial": {
+          "monthly_ground_rent": 0,
+          "lease_type": "Restricted"
+        }
+      },
+      {
+        "address": "29 Pearce Mitchell Place, Stanford, CA 94305-8522",
+        "price": 525000,
+        "bedrooms": 2,
+        "bathrooms": 2,
+        "square_footage": 1100,
+        "lot_size": null,
+        "garage": 1,
+        "description": "Charming ground-floor condo with open layout, spacious bedrooms, and private back patio. Available only to qualified Stanford faculty.",
+        "amenities": ["Private patio", "Breakfast bar", "Community pool"],
+        "financial": {
+          "monthly_ground_rent": 288.28,
+          "lease_type": "Standard",
+          "monthly_hoa_fees": 1052
+        }
+      },
+      {
+        "address": "1017 Cathcart Way, Stanford, CA 94305",
+        "price": 1780000,
+        "bedrooms": 3,
+        "bathrooms": 2.5,
+        "square_footage": 1850,
+        "lot_size": 7200,
+        "garage": 2,
+        "description": "Beautifully updated two-story home near Stanford Golf Course, featuring modern kitchen, open-concept living, and landscaped backyard.",
+        "amenities": ["Modern kitchen", "Fireplace", "Landscaped backyard"],
+        "financial": {
+          "monthly_ground_rent": 310.5,
+          "lease_type": "Standard"
+        }
+      },
+      {
+        "address": "77 Peter Coutts Circle, Stanford, CA 94305",
+        "price": 645000,
+        "bedrooms": 2,
+        "bathrooms": 1.5,
+        "square_footage": 1200,
+        "lot_size": null,
+        "garage": 1,
+        "description": "Well-maintained townhouse-style condo with a private patio and upstairs bedrooms. Located in a quiet, tree-lined community close to campus.",
+        "amenities": ["Townhouse layout", "Community greenbelt", "Private patio"],
+        "financial": {
+          "monthly_ground_rent": 275.0,
+          "lease_type": "Standard",
+          "monthly_hoa_fees": 980
+        }
+      }
     ]
-}
+  }
+  

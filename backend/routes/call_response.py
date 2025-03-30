@@ -52,7 +52,7 @@ def handle_recording():
         final_summary = call_summaries.get(call_sid, "No summary available.")
         send_email_summary(RECIPIENT_EMAIL, final_summary)
     else:
-        greeting_text = ai_response.get("next_question", "Could you please provide more information?")
+        greeting_text = ai_response.get("next_question", "Could you say it again?")
         audio_data = generate_tts_audio(greeting_text)
         audio_url, _ = save_audio_to_file(audio_data)
         response = VoiceResponse()

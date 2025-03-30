@@ -35,3 +35,4 @@ def send_email_summary(to_email, summary):
         server.quit()
     except Exception as e:
         logger.error(f"Failed to send summary email: {e}")
+        

@@ -70,3 +70,4 @@ def transcribe_with_deepgram(recording_url):
     except Exception as e:
         logging.error(f"Unexpected error during transcription: {str(e)}")
         return None
+    
