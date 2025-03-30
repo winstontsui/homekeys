@@ -5,3 +5,5 @@ python-dotenv
 elevenlabs
 flask-socketio
 eventlet
+pymongo[srv]
+mongoengine
