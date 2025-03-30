@@ -1,0 +1,34 @@
+{
+    "properties": [
+        {
+            "address": "869 Tolman Drive, Stanford, CA 94305-1079",
+            "price": 2975000,
+            "bedrooms": 4,
+            "bathrooms": 2,
+            "square_footage": 2588,
+            "lot_size": 12914,
+            "garage": 2,
+            "description": "Gorgeous 4-bedroom home located minutes from the central campus of Stanford.",
+            "amenities": ["High ceilings", "Garden view", "Quiet neighborhood"],
+            "financial": {
+                "monthly_ground_rent": 385.16,
+                "lease_type": "Standard"
+            }
+        },
+        {
+            "address": "2254 Oberlin Street, Palo Alto, CA 94306-1319",
+            "price": 2213000,
+            "bedrooms": 3,
+            "bathrooms": 3,
+            "square_footage": 2345,
+            "lot_size": 6250,
+            "garage": 1,
+            "description": "New Gambrel Cottage style home with smart grey water system and solar power.",
+            "amenities": ["Hardwood floors", "Solar power", "Smart Grey Water System"],
+            "financial": {
+                "monthly_ground_rent": 0,
+                "lease_type": "Restricted"
+            }
+        }
+    ]
+}
