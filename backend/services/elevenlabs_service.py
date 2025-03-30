@@ -2,13 +2,13 @@ import os
 import uuid
 import logging
 from elevenlabs import ElevenLabs
+from config import Config
 
 logger = logging.getLogger(__name__)
 
-# Create the ElevenLabs client once (or pass the API key in create_app)
-elevenlabs_client = ElevenLabs(api_key=os.getenv("ELEVENLABS_API_KEY"))
+elevenlabs_client = ElevenLabs(api_key=Config.ELEVENLABS_API_KEY)
 
-def generate_tts_audio(text, voice_id="yvc8Xy9LseeosFGplnuX", model_id="eleven_multilingual_v2"):
+def generate_tts_audio(text, voice_id=Config.ELEVENLABS_VOICE_ID, model_id="eleven_multilingual_v2"):
     """
     Generates TTS audio from text using ElevenLabs. Returns raw audio data (iterator).
     """

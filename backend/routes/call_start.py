@@ -14,7 +14,7 @@ def handle_voice():
     call_sid = request.form.get("CallSid")
     logger.info(f"CallSid: {call_sid} initiating voice call.")
 
-    greeting_text = "Welcome to Homekey—your smart assistant for real estate. What kind of property are you looking for?"
+    greeting_text = "Welcome to HomeKey—the AI-powered assistant here to help answer your property questions. How can I assist you today?"
     audio_data = generate_tts_audio(greeting_text)
     audio_url, _ = save_audio_to_file(audio_data)
 
