@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Navbar from "@/components/Navbar";
 import { Card } from "@/components/ui/card";
 import {
@@ -20,7 +20,8 @@ import {
   Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { io } from "socket.io-client";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 interface Property {
   id: number;
@@ -33,65 +34,29 @@ interface Property {
   sqft: string;
 }
 
+const fetchSavedProperties = async (): Promise<Property[]> => {
+  // Adjust your URL/port as needed
+  const { data } = await axios.get("http://localhost:5000/saved-properties");
+  return data;
+};
+
 const Dashboard = () => {
-  const [savedProperties, setSavedProperties] = useState<Property[]>([
-    {
-      id: 1,
-      image: "/lovable-uploads/1.png",
-      address: "2254 Oberlin Street",
-      price: "$2,213,000",
-      status: "For Sale",
-      type: "Single Family Home",
-      bedsBaths: "3/3",
-      sqft: "2345",
-    },
-    {
-      id: 2,
-      image: "/lovable-uploads/2.png",
-      address: "57 Pearce Mitchell Place",
-      price: "$550,000",
-      status: "For Sale",
-      type: "Condo",
-      bedsBaths: "2/2",
-      sqft: "1019",
-    },
-  ]);
+  const {
+    data: savedProperties = [],
+    isLoading,
+    isError,
+  } = useQuery<Property[]>({
+    queryKey: ["savedProperties"],
+    queryFn: fetchSavedProperties,
+  });
 
-  useEffect(() => {
-    // Adjust URL if your Flask backend is on a different host/port
-    const socket = io("http://localhost:5000", {
-      transports: ["websocket"], // ensure WebSocket is used
-    });
+  if (isLoading) {
+    return <div>Loading saved properties...</div>;
+  }
 
-    socket.on("connect", () => {
-      console.log("Connected to WebSocket server!");
-    });
-
-    // 3) Listen for "new_property" event from the server
-    socket.on("new_property", (newProp: Property) => {
-      console.log("Received new property from server:", newProp);
-
-      // Check if we already have that property by ID:
-      setSavedProperties((prevProps) => {
-        const exists = prevProps.some((p) => p.id === newProp.id);
-        if (!exists) {
-          return [...prevProps, newProp];
-        } else {
-          // If you want to update it if it already exists, handle that logic here
-          return prevProps.map((p) => (p.id === newProp.id ? newProp : p));
-        }
-      });
-    });
-
-    socket.on("disconnect", () => {
-      console.log("Disconnected from WebSocket server!");
-    });
-
-    // Cleanup on unmount
-    return () => {
-      socket.disconnect();
-    };
-  }, []);
+  if (isError) {
+    return <div>Failed to load saved properties.</div>;
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -114,7 +79,10 @@ const Dashboard = () => {
                 <h3 className="font-semibold text-gray-800">
                   Saved Properties
                 </h3>
-                <p className="text-4xl font-bold mt-2">2</p>
+                {/* Use the length of savedProperties for the count */}
+                <p className="text-4xl font-bold mt-2">
+                  {savedProperties.length}
+                </p>
                 <p className="text-sm text-gray-500 mt-1">
                   Properties of interest
                 </p>

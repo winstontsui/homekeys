@@ -2,6 +2,7 @@ import logging
 import json
 from flask import Flask, request, jsonify
 from flask_socketio import SocketIO, emit
+from flask_cors import CORS
 
 from routes.call_start import call_start
 from routes.call_response import call_response
@@ -14,11 +15,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
+CORS(app)
 connect(host=Config.MONGO_DB)
 socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 app.register_blueprint(call_start)
 app.register_blueprint(call_response)
 app.register_blueprint(bland_properties)
+
+# Store saved properties in memory
+saved_properties = []
 
 def load_property_data():
     """Loads property data from JSON file."""
@@ -43,7 +48,6 @@ def push_property():
 @app.route("/push-property-by-id", methods=["POST"])
 def push_property_by_id():
     data = request.get_json()
-    print("Received JSON data:", data)
 
     try:
         property_id = int(data.get("propertyId"))
@@ -75,10 +79,14 @@ def push_property_by_id():
         "sqft": str(selected_property["square_footage"])
     }
 
-    print("Emitting new_property:", new_property)
-    socketio.emit("new_property", new_property)
+    saved_properties.append(new_property)
 
     return jsonify({"message": "Property pushed", "propertyId": property_id}), 200
+
+@app.route("/saved-properties", methods=["GET"])
+def get_saved_properties():
+    """Returns the list of saved properties."""
+    return jsonify(saved_properties), 200
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)

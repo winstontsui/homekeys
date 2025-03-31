@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Building, ChevronDown, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import BlandCallStarter from "./CallStarter";
 
 const Navbar = () => {
   return (
@@ -39,7 +40,10 @@ const Navbar = () => {
           <Phone className="h-4 w-4 text-primary mr-2" />
           <span className="text-sm">+1 (855) 687-5364</span>
         </div>
-        <Button variant="outline" className="hidden md:flex items-center gap-2 bg-blue-50 text-primary border-blue-100">
+        <Button
+          variant="outline"
+          className="hidden md:flex items-center gap-2 bg-blue-50 text-primary border-blue-100"
+        >
           Enable AI Assistant
           <span className="bg-blue-100 text-primary rounded-md px-1 py-0.5 text-xs">
             AI

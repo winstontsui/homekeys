@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
+import { Phone } from "lucide-react";
 
 export default function BlandCallStarter() {
   const [phone, setPhone] = useState("");
@@ -39,9 +40,10 @@ export default function BlandCallStarter() {
   };
 
   return (
-    <Card className="w-full max-w-md mx-auto p-4 mt-10">
-      <CardContent className="flex flex-col gap-4">
-        <Label htmlFor="phone">Enter Phone Number</Label>
+    <Card className="w-full max-w-sm mx-auto p-8 mt-10 flex flex-col gap-4">
+      <div className={`font-bold text-xl`}>Talk to an agent now!</div>
+      <div>Enter your phone number and let us find you a perfect home.</div>
+      <div className={`flex gap-1 items-center`}>
         <Input
           id="phone"
           type="tel"
@@ -50,9 +52,9 @@ export default function BlandCallStarter() {
           onChange={(e) => setPhone(e.target.value)}
         />
         <Button onClick={handleCall} disabled={loading}>
-          {loading ? "Calling..." : "Start Call"}
+          <Phone />
         </Button>
-      </CardContent>
+      </div>
     </Card>
   );
 }

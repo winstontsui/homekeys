@@ -1,18 +1,21 @@
-
 import React, { useState } from "react";
 import { Search, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const SearchSection = () => {
-  const [searchQuery, setSearchQuery] = useState("3 bed, 2 bath house with a garage");
+  const [searchQuery, setSearchQuery] = useState(
+    "3 bed, 2 bath house with a garage"
+  );
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-10 py-8">
       <div className="mb-6">
         <h2 className="text-3xl font-bold mb-2">Find Your Next Home</h2>
-        <p className="text-gray-600">Use natural language to search for properties that match your needs</p>
+        <p className="text-gray-600">
+          Use natural language to search for properties that match your needs
+        </p>
       </div>
-      
+
       <div className="flex flex-col md:flex-row gap-4">
         <div className="flex-1 relative">
           <input
@@ -29,7 +32,7 @@ const SearchSection = () => {
         </Button>
       </div>
 
-      <div className="mt-4 md:mt-0 float-right">
+      {/* <div className="mt-4 md:mt-0 float-right">
         <div className="bg-primary text-white px-6 py-4 rounded-lg max-w-xs flex flex-col">
           <p className="text-sm mb-1">Are you ready to sell your property?</p>
           <div className="flex items-center justify-between">
@@ -40,7 +43,7 @@ const SearchSection = () => {
             </Button>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };
