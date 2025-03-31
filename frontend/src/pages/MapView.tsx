@@ -17,35 +17,8 @@ import {
 } from "@/components/ui/pagination";
 import propertiesData from "@/components/properties.json";
 
-// Sample property images
-const sampleImages = [
-  "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  "https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80",
-  "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-];
-
-function shuffle<T>(array: T[]): T[] {
-  const copy = [...array];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
-
-const shuffledImages = shuffle(sampleImages);
-
-// Map properties from the JSON file and assign images
-const properties: Property[] = propertiesData.properties.map((property, index) => {
-  const image = shuffledImages[index % shuffledImages.length];
-  return {
-    ...property,
-    image,
-  };
-});
+// Properties from JSON file
+const properties: Property[] = propertiesData.properties;
 
 const MapView = () => {
   const { propertyId } = useParams<{ propertyId?: string }>();
@@ -226,9 +199,9 @@ const MapView = () => {
                           <p className="text-sm text-gray-700 mb-1">{property.address}</p>
                           
                           <div className="flex items-center gap-3 text-sm text-gray-700 mb-2">
-                            <div>{property.bedrooms || property.beds} beds</div>
-                            <div>{property.bathrooms || property.baths} baths</div>
-                            <div>{(property.square_footage || property.sqft)?.toLocaleString()} sqft</div>
+                            <div>{property.bedrooms } beds</div>
+                            <div>{property.bathrooms } baths</div>
+                            <div>{(property.square_footage )?.toLocaleString()} sqft</div>
                           </div>
                           
                           {/* Display hazard zones if available */}

@@ -29,9 +29,6 @@ export interface Property {
   };
   amenities?: string[];
   // For backward compatibility with existing code
-  beds?: number;
-  baths?: number;
-  sqft?: number;
   features?: string[];
   city?: string;
   state?: string;
@@ -44,9 +41,9 @@ interface PropertyCardProps {
 
 const PropertyCard: React.FC<PropertyCardProps> = ({ property }) => {
   // Determine beds/bedrooms, baths/bathrooms, and sqft/square_footage for compatibility
-  const beds = property.bedrooms || property.beds || 0;
-  const baths = property.bathrooms || property.baths || 0;
-  const sqft = property.square_footage || property.sqft || 0;
+  const beds = property.bedrooms || 0;
+  const baths = property.bathrooms || 0;
+  const sqft = property.square_footage || 0;
 
   return (
     <div className="rounded-lg overflow-hidden border shadow-sm hover:shadow-md transition-shadow">

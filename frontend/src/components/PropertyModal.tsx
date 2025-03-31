@@ -243,7 +243,7 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
           <div className="border-t mt-6 pt-6 flex justify-between">
             <Button 
               variant="outline" 
-              onClick={onPrevious}
+              onClick={onPrevious} // Just for demonstration purposes
               disabled={!hasPrevious}
               className={!hasPrevious ? "opacity-50 cursor-not-allowed" : ""}
             >

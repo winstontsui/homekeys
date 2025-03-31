@@ -5,101 +5,20 @@ import Navbar from "@/components/Navbar";
 import PropertyGallery from "@/components/PropertyGallery";
 import PropertyDetails from "@/components/PropertyDetails";
 import SimilarProperties from "@/components/SimilarProperties";
+import propertiesData from "@/components/properties.json";
 import { Property } from "@/components/PropertyCard";
 
-// Sample property data
-const sampleProperties: Property[] = [
-  {
-    id: "1",
-    type: "Condo",
-    price: 550000,
-    address: "87 Pearce Mitchell Place",
-    city: "Stanford",
-    state: "CA",
-    zip: "94305-8526",
-    beds: 2,
-    baths: 2,
-    sqft: 1019,
-    features: ["Pool", "Carport"],
-    image: "https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  },
-  {
-    id: "2",
-    type: "Single Family Home",
-    price: 3750000,
-    address: "710 Frenchman's Road",
-    city: "Stanford",
-    state: "CA",
-    zip: "94305-1005",
-    beds: 6,
-    baths: 5,
-    sqft: 2918,
-    features: ["Garage"],
-    image: "https://images.unsplash.com/photo-1598228723793-52759bba239c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80"
-  },
-  {
-    id: "3",
-    type: "Single Family Home",
-    price: 2213000,
-    address: "2254 Oberlin Street",
-    city: "Palo Alto",
-    state: "CA",
-    zip: "94306-1313",
-    beds: 3,
-    baths: 3,
-    sqft: 2345,
-    features: ["Garage"],
-    image: "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  },
-  {
-    id: "4",
-    type: "Condo",
-    price: 890000,
-    address: "123 Main Street",
-    city: "San Francisco",
-    state: "CA",
-    zip: "94107",
-    beds: 2,
-    baths: 2,
-    sqft: 1200,
-    features: ["Garage"],
-    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  },
-  {
-    id: "5",
-    type: "Single Family Home",
-    price: 1580000,
-    address: "456 Oak Avenue",
-    city: "Menlo Park",
-    state: "CA",
-    zip: "94025",
-    beds: 4,
-    baths: 3,
-    sqft: 2800,
-    features: ["Pool", "Garage"],
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  },
-  {
-    id: "6",
-    type: "Single Family Home",
-    price: 2350000,
-    address: "789 Pine Lane",
-    city: "Palo Alto",
-    state: "CA",
-    zip: "94301",
-    beds: 5,
-    baths: 4,
-    sqft: 3200,
-    features: ["Pool", "Garage"],
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-  }
-];
+const allProperties: Property[] = propertiesData.properties;
+
 
 const PropertyDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
-  
-  // Find the property based on ID
-  const property = sampleProperties.find((p) => p.id === id) || sampleProperties[0];
+
+  const property = allProperties.find((p) => p.id === Number(id));
+
+  if (!property) {
+    return <div className="p-10 text-center text-gray-500">Property not found.</div>;
+  }
   
   // Property images - adding more for the gallery
   const propertyImages = [
@@ -107,7 +26,8 @@ const PropertyDetailsPage = () => {
     "https://images.unsplash.com/photo-1560184897-ae75f418493e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     "https://images.unsplash.com/photo-1560185008-a33f5c1a290e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
-    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+    "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
   ];
   
   return (
@@ -125,9 +45,9 @@ const PropertyDetailsPage = () => {
         
         <PropertyDetails 
           price={property.price}
-          beds={property.beds}
-          baths={property.baths}
-          sqft={property.sqft}
+          beds={property.bedrooms}
+          baths={property.bathrooms}
+          sqft={property.square_footage ?? 0}
           type={property.type}
           yearBuilt={2005}
           lotSize="0.25 acres"
@@ -135,7 +55,7 @@ const PropertyDetailsPage = () => {
         />
         
         <SimilarProperties 
-          properties={sampleProperties.filter(p => p.id !== id).slice(0, 3)}
+          properties={allProperties.filter(p => String(p.id) !== id).slice(0, 3)}
         />
       </div>
     </div>
