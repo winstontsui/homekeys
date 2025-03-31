@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Building, ChevronDown, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import BlandCallStarter from "./CallStarter";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -15,12 +15,30 @@ const Navbar = () => {
       </div>
 
       <nav className="hidden md:flex items-center space-x-8">
-        <Link to="/" className="text-gray-700 hover:text-gray-900">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? "text-blue-700" : "text-gray-700 hover:text-gray-900"
+          }
+        >
           Explore Listings
-        </Link>
-        <Link to="/dashboard" className="text-blue-500 font-medium">
+        </NavLink>
+        <NavLink
+          to="/map"
+          className={({ isActive }) =>
+            isActive ? "text-blue-700" : "text-gray-700 hover:text-gray-900"
+          }
+        >
+          Map View
+        </NavLink>
+        <NavLink
+          to="/dashboard"
+          className={({ isActive }) =>
+            isActive ? "text-blue-700" : "text-gray-700 hover:text-gray-900"
+          }
+        >
           Dashboard
-        </Link>
+        </NavLink>
         <div className="relative group">
           <button className="flex items-center text-gray-700 hover:text-gray-900">
             Company

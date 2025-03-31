@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import PropertyDetailsPage from "./pages/PropertyDetailsPage";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
+import MapView from "./pages/MapView";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/property-details/:id" element={<PropertyDetailsPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/map" element={<MapView />} />
+          <Route path="/map/:propertyId" element={<MapView />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
