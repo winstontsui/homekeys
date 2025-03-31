@@ -29,6 +29,7 @@ const properties = propertiesData.properties.map((property, index) => {
   return {
     ...property,
     image,
+    type: index % 2 === 0 ? "Single Family Home" : "Condo",
   };
 });
 

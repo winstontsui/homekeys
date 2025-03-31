@@ -27,8 +27,6 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
 }) => {
   const navigate = useNavigate();
   
-  if (!isOpen) return null;
-
   // Images for the gallery - in a real app, you would have multiple images
   const images = [
     property.image,
@@ -56,6 +54,7 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
   const beds = property.bedrooms || property.beds || 0;
   const baths = property.bathrooms || property.baths || 0;
   const sqft = property.square_footage || property.sqft || 0;
+  if (!isOpen) return null;
 
   return (
     <div 
