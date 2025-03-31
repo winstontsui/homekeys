@@ -19,17 +19,10 @@ export default function BlandCallStarter() {
 
     setLoading(true);
     try {
-      const headers = {
-        Authorization: "", // Replace with actual key
-      };
+      await axios.post("http://localhost:5000/bland-start-call", {
+        phone,
+      });
 
-      const data = {
-        phone_number: phone,
-        pathway_id: "9c28befe-308e-40eb-893f-c56503491b64",
-        voice: "june",
-      };
-
-      await axios.post("https://api.bland.ai/v1/calls", data, { headers });
       toast.success("Call started successfully!");
     } catch (error) {
       toast.error("Failed to start call");

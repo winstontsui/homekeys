@@ -7,6 +7,7 @@ from flask_cors import CORS
 from routes.call_start import call_start
 from routes.call_response import call_response
 from routes.bland_properties import bland_properties
+from routes.bland_call_start import bland_call_start
 from routes.import_properties import import_properties
 from config import Config
 from mongoengine import connect
@@ -21,29 +22,14 @@ socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 app.register_blueprint(call_start)
 app.register_blueprint(call_response)
 app.register_blueprint(bland_properties)
+app.register_blueprint(bland_call_start)
 
-# Store saved properties in memory
 saved_properties = []
 
 def load_property_data():
     """Loads property data from JSON file."""
     with open("properties.json", "r") as file:
         return json.load(file)["properties"]
-
-@app.route("/push-property", methods=["GET"])
-def push_property():
-    new_property = {
-        "id": 3,
-        "image": "/lovable-uploads/3.png",
-        "address": "123 New Street",
-        "price": "$1,450,000",
-        "status": "For Sale",
-        "type": "Townhouse",
-        "bedsBaths": "3/2",
-        "sqft": "1800"
-    }
-    socketio.emit("new_property", new_property)
-    return "Property pushed", 200
 
 @app.route("/push-property-by-id", methods=["POST"])
 def push_property_by_id():
