@@ -36,7 +36,9 @@ interface Property {
 
 const fetchSavedProperties = async (): Promise<Property[]> => {
   // Adjust your URL/port as needed
-  const { data } = await axios.get("http://localhost:5000/saved-properties");
+  const { data } = await axios.get(
+    "https://homekeys-b8lh.onrender.com/saved-properties"
+  );
   return data;
 };
 
