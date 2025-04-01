@@ -5,17 +5,11 @@ import { Heart, Share2 } from "lucide-react";
 interface PropertyGalleryProps {
   images: string[];
   address: string;
-  city: string;
-  state: string;
-  zip: string;
 }
 
 const PropertyGallery: React.FC<PropertyGalleryProps> = ({ 
   images, 
   address, 
-  city, 
-  state, 
-  zip 
 }) => {
   const mainImage = images[0];
   const additionalImages = images.slice(1, 5);
@@ -53,7 +47,6 @@ const PropertyGallery: React.FC<PropertyGalleryProps> = ({
       
       <div className="mt-4">
         <h1 className="text-2xl font-bold">{address}</h1>
-        <p className="text-gray-600">{`${city}, ${state} ${zip}`}</p>
       </div>
     </div>
   );

@@ -32,6 +32,7 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
     property.image,
     "https://images.unsplash.com/photo-1560185007-c5ca9d2c014d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
     "https://images.unsplash.com/photo-1560185008-a33f5c1a290e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80",
+    "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=2070&q=80",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -51,9 +52,9 @@ const PropertyModal: React.FC<PropertyModalProps> = ({
   };
 
   // Determine beds/bedrooms, baths/bathrooms, and sqft/square_footage for compatibility
-  const beds = property.bedrooms || property.beds || 0;
-  const baths = property.bathrooms || property.baths || 0;
-  const sqft = property.square_footage || property.sqft || 0;
+  const beds = property.bedrooms || 0;
+  const baths = property.bathrooms || 0;
+  const sqft = property.square_footage || 0;
   if (!isOpen) return null;
 
   return (

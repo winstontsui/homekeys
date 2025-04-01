@@ -2,7 +2,9 @@
   "properties": [
     {
       "id": 0,
-      "address": "869 Tolman Drive, Stanford, CA 94305-1079",
+      "address": "1560 Middlefield Rd, Palo Alto, CA 94301",
+      "latitude": 37.444777253009605,
+      "longitude": -122.14407979509558,
       "price": 2975000,
       "bedrooms": 4,
       "bathrooms": 2,
@@ -37,6 +39,8 @@
     {
       "id": 1,
       "address": "2254 Oberlin Street, Palo Alto, CA 94306-1319",
+      "latitude": 37.4239,
+      "longitude": -122.1500,
       "price": 2213000,
       "bedrooms": 3,
       "bathrooms": 3,
@@ -71,6 +75,8 @@
     {
       "id": 2,
       "address": "29 Pearce Mitchell Place, Stanford, CA 94305-8522",
+      "latitude": 37.4220,
+      "longitude": -122.1650,
       "price": 525000,
       "bedrooms": 2,
       "bathrooms": 2,
@@ -103,7 +109,9 @@
     },
     {
       "id": 3,
-      "address": "1017 Cathcart Way, Stanford, CA 94305",
+      "address": "Alta Locale, Palo Alto, CA 94306",
+      "latitude": 37.42340678047201,
+      "longitude": -122.14208537231625,
       "price": 1780000,
       "bedrooms": 3,
       "bathrooms": 2,
@@ -111,7 +119,7 @@
       "lot_size": 7200,
       "garage": 2,
       "description": "Beautifully updated two-story home near Stanford Golf Course, featuring modern kitchen, open-concept living, and landscaped backyard.",
-      "image": "https://images.unsplash.com/photo-1599423300746-b62533397364?auto=format&fit=crop&w=2070&q=80",
+      "image": "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
       "amenities": ["Modern kitchen", "Fireplace", "Landscaped backyard"],
       "financial": {
         "monthly_ground_rent": 310.5,
@@ -138,6 +146,8 @@
     {
       "id": 4,
       "address": "77 Peter Coutts Circle, Stanford, CA 94305",
+      "latitude": 37.4190,
+      "longitude": -122.1640,
       "price": 645000,
       "bedrooms": 2,
       "bathrooms": 1,
@@ -171,6 +181,8 @@
     {
       "id": 5,
       "address": "315 Montrose Avenue, Redwood City, CA 94063",
+      "latitude": 37.4840,
+      "longitude": -122.2030,
       "price": 1450000,
       "bedrooms": 3,
       "bathrooms": 2,
@@ -178,7 +190,7 @@
       "lot_size": 5000,
       "garage": 2,
       "description": "Bright ranch-style home with a modern kitchen and newly upgraded bathrooms. Conveniently located near downtown Redwood City.",
-      "image": "https://images.unsplash.com/photo-1560185008-5b958902d74e?auto=format&fit=crop&w=2070&q=80",
+      "image": "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=2070&q=80",
       "amenities": ["Modern kitchen", "Hardwood floors", "Attached garage"],
       "financial": {
         "monthly_ground_rent": 210,
@@ -204,6 +216,8 @@
     {
       "id": 6,
       "address": "5678 Westbury Lane, Palo Alto, CA 94306",
+      "latitude": 37.4210,
+      "longitude": -122.1300,
       "price": 3100000,
       "bedrooms": 5,
       "bathrooms": 3,
