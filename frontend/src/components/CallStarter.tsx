@@ -19,7 +19,7 @@ export default function BlandCallStarter() {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/bland-start-call", {
+      await axios.post("https://homekeys-b8lh.onrender.com/bland-start-call", {
         phone,
       });
 
